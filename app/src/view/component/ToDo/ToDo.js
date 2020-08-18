@@ -1,26 +1,34 @@
-import React ,{useEffect, useState}from 'react'
+import React, { useEffect, useState } from 'react'
 import './ToDo.css'
-import { useHistory } from 'react-router-dom';
-
+import TodoBox from './TodoBox'
 function ToDo() {
-    let history = useHistory();
-    const [todolist,setTodolist]=useState([]);
-    // const {todobox}=props;
-    useEffect(()=>{
-
-        let lastname=localStorage.getItem("lastName");
-        fetch('/get/toDo', {
-          method: 'POST',
-         body: JSON.stringify({ lastname }),
-         headers: {
-            'Content-Type': 'application/json'
-          }
+    const [dataTodo, setDataTodo] = useState([]);
+    useEffect(() => {
+         fetch('/get/toDo', {
+            method: 'POST',
+            body: JSON.stringify({ lastName: localStorage.getItem("lastName") }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-          .then(res => res.json())
-          .then(data => {
-            // setTodolist([...todolist,{firstName: }]);
-            
-              history.push('/Login');
+            .then(res => res.json())
+            .then(data => {
+                 setDataTodo(data);
+
+            })
+    }, []);
+ 
+    return (
+        <div id='root123'>
+            <h2>ToDo</h2>
+            <div className="boxtest">
+            {
+                dataTodo.map((todoTasks, index) => {
+                    return (<TodoBox key={index} todoTasks={todoTasks} />)
+                })
+            }
+            </div>
+        </div>
 
 
          })

@@ -77,16 +77,33 @@ app.post('/Register', function (req, res) {
 // get Family Users
 app.get('/get/Family', function (req, res) {
     const lastName = req.body.lastName;
-    User.find({ lastName: lastName }, function (err, doc) {
-        res.send(doc)
-    })
+    // User.find({ lastName: lastName }, function (err, doc) {
+    //     res.send(doc)
+    // })
+ 
 })
 // get todo Task
-app.get('/get/toDo', function (req, res) {
+app.post('/get/toDo', async function (req, res) {
     const lastName = req.body.lastName;
-    Task.find({ "user.lastName": lastName }, function (err, doc) {
-        res.send(doc)
-    })
+    console.log("todoget" ,lastName)
+    // Task.find({ "user.lastName": lastName }, function (err, doc) {
+    //     res.send(doc)
+    // })
+    let todoTasks = await Task.aggregate([
+        { $match: {"user.lastName": lastName } },
+        {
+            $group: {
+                _id: '$lastName',
+                todoTasks: { $push: "$$ROOT" },
+             }
+        }
+        // {$project:
+        //     {'sum':true,'carTypes':true}
+        // }
+    ])
+    console.log("*******************")
+    console.log(todoTasks);
+    res.send(todoTasks)
 })
 
 //edit Task and update it 

@@ -1,7 +1,7 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
 import './Login.css'
 import { useHistory } from 'react-router-dom';
-
+ 
 function Login() {
   let history = useHistory();
     return(
