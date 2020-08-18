@@ -14,6 +14,7 @@ function ToDo() {
             .then(res => res.json())
             .then(data => {
                  setDataTodo(data);
+                 console.log(data)
 
             })
     }, []);

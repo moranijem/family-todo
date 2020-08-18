@@ -9,8 +9,7 @@ export default function TodoBox(props) {
     console.log(todoTasks)
     return (
 
-        
-            todo.map((todoTasks, index) => {
+             todo.map((todoTasks, index) => {
                 return (<ShowTODO key={index} todoTasks={todoTasks} />)
             })
         

@@ -40,8 +40,9 @@ const Task = mongoose.model("Task", {
 app.post('/checkUserExist', function (req, res) {
     console.log("aaaa")
     let { success } = false;
-    console.log("Check User Exist after register");
-    User.find({ userEmail: usermail, password: password }, function (err, doc) {
+    const {userEmail,password}=req.body;
+    console.log("Check User Exist",userEmail,password);
+    User.find({ userEmail: userEmail, password: password }, function (err, doc) {
         if (doc.length === 0 || doc.length === []) {
             res.send([{ success: false }])
         } else {
@@ -93,7 +94,7 @@ app.post('/get/toDo', async function (req, res) {
         { $match: {"user.lastName": lastName } },
         {
             $group: {
-                _id: '$lastName',
+                _id: '$user.firstName',
                 todoTasks: { $push: "$$ROOT" },
              }
         }
