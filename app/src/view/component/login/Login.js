@@ -11,22 +11,18 @@ function Login() {
       <label for="">Your Email:</label>
       <input type="email"  id="usermail" name="usermail" placeholder="Enter email"></input><br></br><br></br>
       <label for="">password</label>
-      <input type="password"  id="password" name="password" placeholder="password"></input><br></br><br></br>
+      <input type="password"  id="password" name="password"></input><br></br><br></br>
       <input type="button"  id="Login" name="Login" value="Login" onClick={checkUse}></input><br></br><br></br>
-      </form>
+</form>
       </div>
-      
       )
       function checkUse(e) {
 
         e.preventDefault();
-        // const { username, UserLName, Password } = e.target.elements.value;
-        let usermail=document.getElementById("usermail").value;
-        let password=document.getElementById("password").value;
-
-        fetch('/checkUserExist', {
+        const { username, UserLName, Password } = e.target.elements.value;
+        fetch('/Register', {
           method: 'POST',
-          body: JSON.stringify({ usermail, password }),
+          body: JSON.stringify({ username, UserLName, Password }),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -44,4 +40,5 @@ function Login() {
       
     }
   }
-    export default Login;
+
+export default Login;

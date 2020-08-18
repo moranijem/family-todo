@@ -37,13 +37,12 @@ const Task = mongoose.model("Task", {
 })
 
 //check if the user exsit in DB  Login
-app.get('/checkUserExist', function (req, res) {
-    const NewUser = { userEmail, firstName, lastName, imgUrl, password } = req.body;
+app.post('/checkUserExist', function (req, res) {
+    console.log("aaaa")
     let { success } = false;
     console.log("Check User Exist after register");
-    User.find({ userEmail: userEmail }, function (err, doc) {
+    User.find({ userEmail: usermail, password: password }, function (err, doc) {
         if (doc.length === 0 || doc.length === []) {
-            User.create(NewUser).then(docs => { console.log('save to DB') })
             res.send([{ success: false }])
         } else {
             res.send([{ success: true }, { doc: doc }])
@@ -54,15 +53,20 @@ app.get('/checkUserExist', function (req, res) {
 
 //Register 
 app.post('/Register', function (req, res) {
-    const { userEmail, password } = req.body;
+    const { firstName, lastName, userEmail, password, imgUrl } = req.body;
     let { success } = false;
-    console.log("Check User Exist...");
+     let UserNew = new User({ userEmail: userEmail, firstName: firstName, lastName: lastName, imgUrl:imgUrl,password:password});
+     console.log("Check User Exist... Register");
     User.find({ userEmail: userEmail, password: password }, function (err, doc) {
         if (doc.length === 0 || doc.length === []) {
-            console.log("not found...");
-            res.send([{ success: false }])
+            console.log("not found ...");
+            console.log("Create new user...");
+            UserNew.save().then(docs => { console.log('save to DB,',firstName,lastName) });
+
+            res.send([{ success: true }])
         } else {
-            res.send([{ success: true }, { doc: doc }])
+            console.log("user Found")
+            res.send([{ success: false }])
         }
     })
 })
@@ -90,18 +94,18 @@ app.put('/Update/Todo', function (req, res) {
     const { taskTitle, taskContent, done, TaskId } = req.body;
     let { success } = false;
     console.log("Updated ToDo");
-     Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
+    Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
 })
 
 //add Todo 
 //edit Task and update it 
 app.put('/Update/Todo', function (req, res) {
-    const { userEmail, firstName, lastName, imgUrl,password,taskTitle,taskContent,done } = req.body;
+    const { userEmail, firstName, lastName, imgUrl, password, taskTitle, taskContent, done } = req.body;
     let { success } = false;
     console.log("Updated ToDo");
-     Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
+    Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
 })
- 
+
 
 //Remove Todo
 

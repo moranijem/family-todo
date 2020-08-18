@@ -10,7 +10,7 @@
       
   }
 
-  #username{
+  #firstName{
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd ;
@@ -19,7 +19,7 @@
 
   }
 
-  #UserLName{
+  #lastName{
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd ;
@@ -28,7 +28,7 @@
 
   }
 
-  #Useremail{
+  #userEmail{
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd ;
@@ -37,7 +37,7 @@
 
   }
 
-  #Password{
+  #password{
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd ;
@@ -45,7 +45,7 @@
     box-sizing:border-box;
 
   }
-  #img{
+  #imgUrl{
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd ;
@@ -56,12 +56,13 @@
 
   #Register{
     width: 100%;
-			padding: 15px;
-			background-color: #535b63;
-			border: 0;
-			box-sizing: border-box;
-			cursor: pointer;
-			font-weight: bold;
-			color: #ffffff;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
 
-  }
+  
