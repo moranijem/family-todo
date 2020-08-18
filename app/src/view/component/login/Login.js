@@ -4,17 +4,16 @@ import { useHistory } from 'react-router-dom';
 
 function Login() {
   let history = useHistory();
-  return (
-    <div className="Login">
-      <h2>Login</h2>
-      <label for="">First-Name</label>
-      <input type="text"  id="username" name="username"></input><br></br><br></br>
-      <label for="">Last-Name</label>
-      <input type="text" id="UserLName" name="UserLName"></input><br></br><br></br>
+    return(
+<div className="Login">
+      <h2>Login</h2> 
+      <form id="form">
+      <label for="">Your Email:</label>
+      <input type="email"  id="usermail" name="usermail" placeholder="Enter email"></input><br></br><br></br>
       <label for="">password</label>
       <input type="password"  id="password" name="password"></input><br></br><br></br>
       <input type="button"  id="Login" name="Login" value="Login" onClick={checkUse}></input><br></br><br></br>
-
+</form>
       </div>
       )
       function checkUse(e) {
@@ -41,5 +40,5 @@ function Login() {
       
     }
   }
-}
+
 export default Login;

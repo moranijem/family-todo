@@ -8,17 +8,19 @@ function Register() {
   return (
     <div className="Register">
       <h2>Register</h2>
+      <form id="form1"> 
       <label for="">First-Name</label>
-      <input type="text" id="firstName" name="username"></input><br></br><br></br>
+      <input type="text" id="firstName" name="username" placeholder="username"></input><br></br><br></br>
       <label for="">Last-Name</label>
-      <input type="text" id="lastName" name="UserLName"></input><br></br><br></br>
+      <input type="text" id="lastName" name="UserLName" placeholder="UserLName"></input><br></br><br></br>
       <label for="">Useremail</label>
-      <input type="email" id="userEmail" name="Useremail"></input><br></br><br></br>
+      <input type="email" id="userEmail" name="Useremail" placeholder="Useremail"></input><br></br><br></br>
       <label for="">Img-Url</label>
-      <input type="text" id="imgUrl" name="img"></input><br></br><br></br>
+      <input type="text" id="imgUrl" name="img"placeholder="img "></input><br></br><br></br>
       <label for="">Password</label>
-      <input type="Password" id="password" name="Password"></input><br></br><br></br>
+      <input type="Password" id="password" name="Password" placeholder="Password"></input><br></br><br></br>
       <input type="button" id="Register" name="Register" value="Register" onClick={registerUser}></input><br></br><br></br>
+    </form>
     </div>
 
 
