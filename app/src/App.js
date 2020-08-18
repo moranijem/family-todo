@@ -1,10 +1,14 @@
-import './App.css';
 import React from "react";
+import './App.css';
+import  Register from './view/component/register/Register'
+import Login from './view/component/login/Login'
+import ToDo from './view/component/ToDo/ToDo'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
+  
 } from "react-router-dom";
 
 export default function App() {
@@ -14,10 +18,10 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Login</Link>
+              <Link to="/Login">Login</Link>
             </li>
             <li>
-              <Link to="/Register">Register</Link>
+              <Link to="/">Register</Link>
             </li>
             <li>
               <Link to="/ToDo">ToDo</Link>
@@ -31,8 +35,8 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Register">
-            <Register />
+          <Route path="/Login">
+          <Login />
           </Route>
           <Route path="/ToDo">
             <ToDo />
@@ -41,40 +45,27 @@ export default function App() {
             <Mission/>
           </Route>
           <Route path="/">
-            <Login />
-          </Route>
+            <Register />
+           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
 
-function Login() {
-  return(
-    <div className="homepage">
-    <h2>Login</h2>
-    <label for="">User-Name</label>
-    <label for="">User-LName</label>
-    <label for="">Useremil</label>
-    <label for="">Img-Url</label>
-    <label for="">Password</label>
-    </div>
-    
 
-  ) 
-}
 
-function Register() {
-  return <h2>Register</h2>;
-}
+// function Login() {
+//   return <h2>Login</h2>;
+// }
 
-function ToDo() {
-  return <h2>ToDo</h2>;
-}
+// function ToDo() {
+//   return <h2>ToDo</h2>;
+// }
 
 function Mission() {
   return <h2>Mission</h2>;
 }
 
 
-export default App;
+// export default App;

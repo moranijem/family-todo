@@ -90,7 +90,7 @@ app.put('/Update/Todo', function (req, res) {
     const { taskTitle, taskContent, done, TaskId } = req.body;
     let { success } = false;
     console.log("Updated ToDo");
-    await Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
+     Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
 })
 
 //add Todo 
@@ -99,7 +99,7 @@ app.put('/Update/Todo', function (req, res) {
     const { userEmail, firstName, lastName, imgUrl,password,taskTitle,taskContent,done } = req.body;
     let { success } = false;
     console.log("Updated ToDo");
-    await Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
+     Task.findOneAndUpdate({ _id, TaskId }, { $set: { taskTitle: taskTitle, taskContent: taskContent, done: done } });
 })
  
 
