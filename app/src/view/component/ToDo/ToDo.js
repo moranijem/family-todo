@@ -1,37 +1,43 @@
-import React from 'react'
+import React ,{useEffect, useState}from 'react'
 import './ToDo.css'
+import { useHistory } from 'react-router-dom';
+
 function ToDo() {
+    let history = useHistory();
+    const [todolist,setTodolist]=useState([]);
+    // const {todobox}=props;
+    useEffect(()=>{
+
+        let lastname=localStorage.getItem("lastName");
+        fetch('/get/toDo', {
+          method: 'POST',
+         body: JSON.stringify({ lastname }),
+         headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            // setTodolist([...todolist,{firstName: }]);
+            
+              history.push('/Login');
+
+
+         })
+
+      
+
+
+    },[])
     return (
         <div id='root'>
             <h2>ToDo</h2>
+            {/* {todobox} */}
 
         </div>
 
+
     )
+    }
 
-    //  function todolist(e) {
-
-    //     e.preventDefault();
-    //     localStorage
-
-    //      const { username, UserLName, Useremail, img, Password } = e.target.elements.value;
-    //      fetch('/Register', {
-    //        method: 'POST',
-    //       body: JSON.stringify({ username, UserLName, Useremail, img, Password }),
-    //       headers: {
-    //          'Content-Type': 'application/json'
-    //        }
-    //      })
-    //        .then(res => res.json())
-    //        .then(data => {
-
-    //          if (data[0].success) {
-    //            history.push('/Login');
-
-    //          }
-
-    //       })
-
-    //    }
-}
 export default ToDo;

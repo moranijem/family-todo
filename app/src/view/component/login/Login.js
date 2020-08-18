@@ -8,11 +8,11 @@ function Login() {
 <div className="Login">
       <h2>Login</h2> 
       <form id="form">
-      <label for="">Your Email:</label>
-      <input type="email"  id="usermail" name="usermail" placeholder="Enter email"></input><br></br><br></br>
-      <label for="">password</label>
-      <input type="password"  id="password" name="password"></input><br></br><br></br>
-      <input type="button"  id="Login" name="Login" value="Login" onClick={checkUse}></input><br></br><br></br>
+      {/* <label for="">Your Email:</label> */}
+      <input type="email"  id="usermail" name="usermail" placeholder="Enter email"></input>
+      {/* <label for="">password</label> */}
+      <input type="password"  id="password" name="password" placeholder="password"></input>
+      <input type="button"  id="Login" name="Login" value="Login" onClick={checkUse}></input>
 </form>
       </div>
       )

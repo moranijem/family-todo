@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Register.css'
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 function Register() {
   // const [statusUser, setstatusUser] = useState(false);
   let history = useHistory();
@@ -9,17 +9,20 @@ function Register() {
     <div className="Register">
       <h2>Register</h2>
       <form id="form1"> 
-      <label for="">First-Name</label>
-      <input type="text" id="firstName" name="username" placeholder="username"></input><br></br><br></br>
-      <label for="">Last-Name</label>
-      <input type="text" id="lastName" name="UserLName" placeholder="UserLName"></input><br></br><br></br>
-      <label for="">Useremail</label>
-      <input type="email" id="userEmail" name="Useremail" placeholder="Useremail"></input><br></br><br></br>
-      <label for="">Img-Url</label>
-      <input type="text" id="imgUrl" name="img"placeholder="img "></input><br></br><br></br>
-      <label for="">Password</label>
-      <input type="Password" id="password" name="Password" placeholder="Password"></input><br></br><br></br>
-      <input type="button" id="Register" name="Register" value="Register" onClick={registerUser}></input><br></br><br></br>
+      
+      <input type="text" id="firstName" name="username" placeholder="username"></input>
+      
+      <input type="text" id="lastName" name="UserLName" placeholder="UserLName"></input>
+     
+      <input type="email" id="userEmail" name="Useremail" placeholder="Useremail"></input>
+      
+      <input type="text" id="imgUrl" name="img"placeholder="img "></input>
+      
+      <input type="Password" id="password" name="Password" placeholder="Password"></input>
+      <input type="button" id="Register" name="Register" value="Register" onClick={registerUser}></input>
+      <div className="li">
+      <Link to="/Login">PRESS HERE TO LOGIN</Link>
+      </div>
     </form>
     </div>
 
