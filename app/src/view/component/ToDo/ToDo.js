@@ -4,7 +4,7 @@ import TodoBox from './TodoBox'
 function ToDo() {
     const [dataTodo, setDataTodo] = useState([]);
     useEffect(() => {
-         fetch('/get/toDo', {
+        fetch('/get/toDo', {
             method: 'POST',
             body: JSON.stringify({ lastName: localStorage.getItem("lastName") }),
             headers: {
@@ -13,21 +13,30 @@ function ToDo() {
         })
             .then(res => res.json())
             .then(data => {
-                 setDataTodo(data);
-                 console.log(data)
-
+                setDataTodo(data);
+                //  console.log(data)
             })
     }, []);
- 
+
     return (
         <div id='root123'>
             <h2>ToDo</h2>
             <div className="boxtest">
-            {
-                dataTodo.map((todoTasks, index) => {
-                    return (<TodoBox key={index} todoTasks={todoTasks} />)
-                })
-            }
+                {
+                    dataTodo.map((todoTasks, index) => {
+                        
+                        return (
+                                <div className="TodoBoxShow">
+                                    <div>
+                                        <div className="head">  <img className="imgTodo" src={todoTasks.todoTasks[0].user.imgUrl}></img>
+                                            <h1>{todoTasks.todoTasks[0].user.firstName}</h1>
+                                        </div>
+                                    </div>
+                                    <TodoBox key={index} todoTasks={todoTasks} />
+                                </div>
+                        )
+                    })
+                }
             </div>
         </div>
 
